@@ -1,0 +1,108 @@
+@charset "utf-8";
+
+/* Botões (tela principal) */
+.button img {
+    margin: 50px 15px 25px 15px;
+    padding: 5px;
+    border: 1px solid #e8e8e8;
+    cursor: pointer;
+}
+
+/* Botão reset */
+#btnReset {
+    width: 48px;
+    height: 48px;
+    background-image: url('../img/clear.png');
+    border: none;
+    cursor: pointer;
+    margin-left: 10px;
+}
+
+/* rodapé */
+footer {
+    width: 100%;
+    height: 55px;   
+    background-color: #0078d7;
+    position: fixed;
+    bottom: 0;
+    display: flex;
+    justify-content: space-between;
+    padding: 5px;
+}
+
+footer p {
+    color: #ffffff;
+    padding-top: 7px;
+    font-size: 1.2em;    
+}
+
+
+/* Ocultar o id do cliente */
+#inputIdClient {
+    display: none;
+}
+
+/* Estilo para a mensagem de erro do CPF */
+#mensagem-cpf {
+    color: red; /* Cor da mensagem de erro */
+    font-size: 0.9em;
+    margin-top: 5px;
+    font-weight: bold;
+}
+
+/* Estilo do campo CPF quando erro ocorre */
+#inputCPFClient.error {
+    border-color: red; /* Bordo vermelho para o campo de CPF quando erro ocorre */
+    background-color: #f8d7da; /* Cor de fundo suave para indicar erro */
+}
+
+/* Estilo do botão de adicionar quando CPF está incorreto */
+#btnCreate:disabled {
+    background-color: #ccc; /* Cor do botão desativado */
+    cursor: not-allowed;
+}
+
+/* Exemplo para outros tipos de mensagens de erro, caso necessário */
+.error-message {
+    color: #f44336; /* Cor vermelha */
+    background-color: #f8d7da; /* Fundo suave */
+    padding: 10px;
+    margin-top: 10px;
+    border-radius: 5px;
+    border: 1px solid #f44336;
+}
+
+.cliente {
+    width: 150px; /* ou o tamanho desejado */
+    height: 150px;
+    object-fit: cover; /* Corta a imagem para caber no tamanho */
+    margin: 10px; /* Espaçamento entre as imagens */
+    cursor: pointer; /* Mostra a mãozinha ao passar o mouse */
+}
+
+.servico {
+    width: 150px; /* ou o tamanho desejado */
+    height: 150px;
+    object-fit: cover; /* Corta a imagem para caber no tamanho */
+    margin: 10px; /* Espaçamento entre as imagens */
+    cursor: pointer; /* Mostra a mãozinha ao passar o mouse */
+}
+
+.banner-canto {
+    position: fixed;
+    bottom: 70px;
+    right: 15px;
+    width: 180px; /* tamanho menor */
+    height: auto;
+    z-index: 999;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    border-radius: 8px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform 0.2s ease-in-out;
+}
+
+
+.banner-canto:hover {
+    transform: scale(1.02);
+}
