@@ -22,5 +22,6 @@ contextBridge.exposeInMainWorld('api', {
     deleteClient: (id) => ipcRenderer.send('delete-client', id),
     updateClient: (client) => ipcRenderer.send('update-client', client),
     setCpf: (args) => ipcRenderer.on('set-cpf', args),
-    servicotWindow: () => ipcRenderer.send('servico-window'),
+    servicoWindow: () => ipcRenderer.send('servico-window'),
+    renderservico: (servico) => ipcRenderer.on('render-servico', servico),
 })

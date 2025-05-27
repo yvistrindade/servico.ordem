@@ -64,46 +64,6 @@ function aboutWindow() {
     about.loadFile('./src/views/sobre.html')
 }
 
-// Janela serviço
-let servico
-function servicoWindow() {
-    nativeTheme.themeSource = 'light'
-    const main = BrowserWindow.getFocusedWindow()
-    if (main) {
-        client = new BrowserWindow({
-            width: 1010,
-            height: 680,
-            //autoHideMenuBar: true,
-            //resizable: false,
-            parent: main,
-            modal: true,
-            //ativação do preload.js
-            webPreferences: {
-                preload: path.join(__dirname, 'preload.js')
-            }
-        })
-    }
-    servico.loadFile('./src/views/servico.html')
-    servico.center() //iniciar no centro da tela   
-}
-
-// Iniciar a aplicação
-app.whenReady().then(() => {
-    createWindow()
-
-    app.on('activate', () => {
-        if (BrowserWindow.getAllWindows().length === 0) {
-            createWindow()
-        }
-    })
-})
-
-app.on('window-all-closed', () => {
-    if (process.platform !== 'darwin') {
-        app.quit()
-    }
-})
-
 // Janela cliente
 let client
 function clientWindow() {
@@ -125,6 +85,47 @@ function clientWindow() {
     }
     client.loadFile('./src/views/cliente.html')
     client.center() //iniciar no centro da tela   
+}
+
+// Iniciar a aplicação
+app.whenReady().then(() => {
+    createWindow()
+
+    app.on('activate', () => {
+        if (BrowserWindow.getAllWindows().length === 0) {
+            createWindow()
+        }
+    })
+})
+
+app.on('window-all-closed', () => {
+    if (process.platform !== 'darwin') {
+        app.quit()
+    }
+})
+
+
+// Janela servico
+let servico
+function servicoWindow() {
+    nativeTheme.themeSource = 'light'
+    const main = BrowserWindow.getFocusedWindow()
+    if (main) {
+        servico = new BrowserWindow({
+            width: 1010,
+            height: 680,
+            //autoHideMenuBar: true,
+            //resizable: false,
+            parent: main,
+            modal: true,
+            //ativação do preload.js
+            webPreferences: {
+                preload: path.join(__dirname, 'preload.js')
+            }
+        })
+    }
+    servico.loadFile('./src/views/servico.html')
+    servico.center() //iniciar no centro da tela   
 }
 
 // Iniciar a aplicação
@@ -174,7 +175,7 @@ const template = [
                 click: () => clientWindow()
             },
             {
-                label: 'Orden de serviço',
+                label: 'Ordem de serviço',
                 click: () => servicoWindow()
             },
             {
@@ -238,7 +239,10 @@ const template = [
 // recebimento dos pedidos do renderizador para abertura de janelas (botões) autorizado no preload.js
 ipcMain.on('client-window', () => {
     clientWindow()
-    servico()
+})
+
+ipcMain.on('servico-window', () => {
+    servicoWindow()
 })
 
 
