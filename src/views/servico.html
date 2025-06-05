@@ -5,105 +5,103 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Ordem de Serviço - Impressora Digital</title>
   <script src="https://cdn.tailwindcss.com"></script>
-  <script src="https://cdn.jsdelivr.net/npm/cleave.js@1.6.0/dist/cleave.min.js"></script>
   <style>
     html, body {
       height: 100%;
+      margin: 0;
       overflow: hidden;
+    }
+
+    textarea, input, select {
+      outline: none;
     }
   </style>
 </head>
 <body class="flex items-center justify-center h-screen bg-gray-100">
-  <form class="bg-white p-6 rounded-2xl shadow-lg w-[95vw] max-w-6xl h-[95vh] grid grid-cols-1 md:grid-cols-2 gap-6">
-    
+  <form class="bg-white p-6 rounded-2xl shadow-lg w-[95vw] max-w-6xl h-[95vh] grid grid-cols-2 gap-6">
     <!-- Coluna 1 -->
-    <div class="space-y-4">
-      <h2 class="text-2xl font-semibold text-gray-800">Dados do Cliente</h2>
-      <div class="grid grid-cols-2 gap-4 text-sm">
-        <div>
-          <label class="block font-medium">Nome</label>
-          <input type="text" class="w-full p-2 border rounded focus:ring-2 focus:ring-blue-400" required />
+    <div class="flex flex-col gap-4 overflow-hidden">
+      <div class="flex flex-col flex-grow gap-4 overflow-hidden">
+        <h2 class="text-2xl font-semibold text-gray-800">Dados do Cliente</h2>
+        <div class="grid grid-cols-2 gap-4">
+          <input id="nome" placeholder="Nome" class="col-span-2 p-2 border rounded" required />
+          <input id="cpf" placeholder="CPF/CNPJ" class="p-2 border rounded" />
+          <input id="telefone" placeholder="Telefone" class="p-2 border rounded" />
+          <input id="email" type="email" placeholder="Email" class="col-span-2 p-2 border rounded" />
+          <input id="endereco" placeholder="Endereço" class="col-span-2 p-2 border rounded" />
         </div>
-        <div>
-          <label class="block font-medium">CPF/CNPJ</label>
-          <input id="cpf" type="text" class="w-full p-2 border rounded focus:ring-2 focus:ring-blue-400" required />
-        </div>
-        <div>
-          <label class="block font-medium">Telefone</label>
-          <input id="telefone" type="tel" class="w-full p-2 border rounded focus:ring-2 focus:ring-blue-400" />
-        </div>
-        <div>
-          <label class="block font-medium">Email</label>
-          <input type="email" class="w-full p-2 border rounded focus:ring-2 focus:ring-blue-400" />
-        </div>
-        <div class="col-span-2 grid grid-cols-3 gap-4">
-          <div>
-            <label class="block font-medium">CEP</label>
-            <input id="cep" type="text" class="w-full p-2 border rounded focus:ring-2 focus:ring-blue-400" />
-          </div>
-          <div class="col-span-2">
-            <label class="block font-medium">Endereço</label>
-            <input id="endereco" type="text" class="w-full p-2 border rounded focus:ring-2 focus:ring-blue-400" />
-          </div>
-        </div>
-      </div>
 
-      <h2 class="text-2xl font-semibold text-gray-800 mt-4">Descrição do Equipamento</h2>
-      <div class="grid grid-cols-2 gap-4 text-sm">
-        <div>
-          <label class="block font-medium">Marca</label>
-          <input type="text" class="w-full p-2 border rounded focus:ring-2 focus:ring-blue-400" />
-        </div>
-        <div>
-          <label class="block font-medium">Modelo</label>
-          <input type="text" class="w-full p-2 border rounded focus:ring-2 focus:ring-blue-400" />
-        </div>
-        <div>
-          <label class="block font-medium">Nº de Série</label>
-          <input type="text" class="w-full p-2 border rounded focus:ring-2 focus:ring-blue-400" />
-        </div>
-        <div>
-          <label class="block font-medium">Acessórios</label>
-          <input type="text" class="w-full p-2 border rounded focus:ring-2 focus:ring-blue-400" placeholder="Ex: cabos, fonte, etc." />
+        <h2 class="text-2xl font-semibold text-gray-800">Descrição do Equipamento</h2>
+        <div class="grid grid-cols-2 gap-4">
+          <input id="marca" placeholder="Marca" class="p-2 border rounded" />
+          <input id="modelo" placeholder="Modelo" class="p-2 border rounded" />
+          <input id="serie" placeholder="Nº de Série" class="p-2 border rounded" />
+          <input id="acessorios" placeholder="Acessórios" class="p-2 border rounded" />
         </div>
       </div>
     </div>
 
     <!-- Coluna 2 -->
-    <div class="space-y-4">
+    <div class="flex flex-col gap-4 overflow-hidden">
       <h2 class="text-2xl font-semibold text-gray-800">Diagnóstico / Defeito Relatado</h2>
-      <textarea rows="4" class="w-full p-2 border rounded resize-none text-sm focus:ring-2 focus:ring-blue-400" placeholder="Descreva o problema..."></textarea>
+      <textarea id="diagnostico" class="w-full p-2 border rounded resize-none h-24" placeholder="Descreva o problema..."></textarea>
 
-      <h2 class="text-2xl font-semibold text-gray-800 mt-2">Serviços Executados</h2>
-      <textarea rows="4" class="w-full p-2 border rounded resize-none text-sm focus:ring-2 focus:ring-blue-400" placeholder="Descreva os serviços realizados..."></textarea>
+      <h2 class="text-2xl font-semibold text-gray-800">Serviços Executados</h2>
+      <textarea id="servicos" class="w-full p-2 border rounded resize-none h-24" placeholder="Descreva os serviços realizados..."></textarea>
 
-      <div class="grid grid-cols-2 gap-4 text-sm">
-        <div>
-          <label class="block font-medium">Data de Entrada</label>
-          <input type="date" class="w-full p-2 border rounded focus:ring-2 focus:ring-blue-400" />
-        </div>
-        <div>
-          <label class="block font-medium">Data de Saída</label>
-          <input type="date" class="w-full p-2 border rounded focus:ring-2 focus:ring-blue-400" />
-        </div>
-        <div>
-          <label class="block font-medium">Valor (R$)</label>
-          <input id="valor" type="text" class="w-full p-2 border rounded focus:ring-2 focus:ring-blue-400" />
-        </div>
-        <div>
-          <label class="block font-medium">Status</label>
-          <select class="w-full p-2 border rounded focus:ring-2 focus:ring-blue-400">
-            <option>Em Análise</option>
-            <option>Em Execução</option>
-            <option>Concluído</option>
-            <option>Cancelado</option>
-          </select>
-        </div>
+      <div class="grid grid-cols-2 gap-4">
+        <input id="dataEntrada" type="date" class="p-2 border rounded" />
+        <input id="dataSaida" type="date" class="p-2 border rounded" />
+        <input id="valor" type="number" step="0.01" placeholder="Valor (R$)" class="p-2 border rounded" />
+        <select id="status" class="p-2 border rounded">
+          <option>Em Análise</option>
+          <option>Em Execução</option>
+          <option>Concluído</option>
+          <option>Cancelado</option>
+        </select>
       </div>
 
-      <div class="flex justify-end gap-4 mt-6">
+      <div class="flex justify-end gap-4 mt-auto">
         <button type="reset" class="px-4 py-2 bg-gray-300 text-gray-800 rounded hover:bg-gray-400">Limpar</button>
         <button type="button" onclick="salvarOrdem()" class="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700">Salvar OS</button>
       </div>
     </div>
   </form>
+
+  <script>
+    async function salvarOrdem() {
+      const dados = {
+        nome: document.getElementById('nome').value,
+        cpf: document.getElementById('cpf').value,
+        telefone: document.getElementById('telefone').value,
+        email: document.getElementById('email').value,
+        endereco: document.getElementById('endereco').value,
+        marca: document.getElementById('marca').value,
+        modelo: document.getElementById('modelo').value,
+        serie: document.getElementById('serie').value,
+        acessorios: document.getElementById('acessorios').value,
+        diagnostico: document.getElementById('diagnostico').value,
+        servicos: document.getElementById('servicos').value,
+        dataEntrada: document.getElementById('dataEntrada').value,
+        dataSaida: document.getElementById('dataSaida').value,
+        valor: document.getElementById('valor').value,
+        status: document.getElementById('status').value
+      };
+
+      try {
+        const resposta = await fetch('http://localhost:3000/api/ordens', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(dados),
+        });
+
+        const resultado = await resposta.json();
+        alert(resultado.message || 'Ordem salva com sucesso!');
+      } catch (erro) {
+        alert('Erro ao salvar ordem. Veja o console.');
+        console.error(erro);
+      }
+    }
+  </script>
+</body>
+</html>
